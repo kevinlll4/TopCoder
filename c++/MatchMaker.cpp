@@ -48,7 +48,7 @@ vector<string> MatchMaker::getBestMatches(vector<string> members,string StringCu
 
     for(int i=0; i<members.size(); i++)
     {
-        cout<<members[i]<<"\n";
+
         s<<members[i];
         s>>nombre>>genero1>>genero2;
 
@@ -68,15 +68,16 @@ vector<string> MatchMaker::getBestMatches(vector<string> members,string StringCu
         }
     }
     int cont;
-    cout<<"\n";
+
+
     for(int i=0; i<members.size(); i++)
     {
-        if(generos[id].second==generos[i].first)
+        if(generos[id].second==generos[i].first && i!=id)
         {
-            cout<<i;
-            for(int j=0; j<members.size()-3; j++)
+              cont=0;
+            for(int j=0; j<contarcadenas(members[0])-3; j++)
             {
-                cont=0;
+
                 if(op1[id][j]==op1[i][j])
                 {
                     cont++;
@@ -84,7 +85,7 @@ vector<string> MatchMaker::getBestMatches(vector<string> members,string StringCu
                 }
 
             }
-            cout<<cont;
+
             if(cont>=sf)
             {
                 seleccionados.push_back(pair<string,int>(nombres[i],cont));
@@ -127,7 +128,7 @@ int main()
         us.push_back(cad);
     }
     vector<string> res;
-    res=maker.getBestMatches(us,"BETTY",1);
+    res=maker.getBestMatches(us,"BETTY",2);
 
     for(int i=0; i<res.size(); i++)
     {
